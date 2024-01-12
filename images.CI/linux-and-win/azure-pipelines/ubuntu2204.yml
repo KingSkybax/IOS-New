@@ -1,0 +1,21 @@
+schedules:
+- cron: "0 0 * * *"
+  displayName: Daily
+  branches:
+    include:
+    - ubuntu-new-folder-structure
+  always: true
+
+trigger: none
+pr:
+  autoCancel: true
+  branches:
+    include:
+    - ubuntu-new-folder-structure
+
+jobs:
+- template: image-generation.yml
+  parameters:
+    image_type: ubuntu2204
+    image_readme_name: Ubuntu2204-Readme.md
+    image_template_name: ubuntu-22.04.pkr.hcl
